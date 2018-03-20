@@ -1,0 +1,39 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>ajax</title>
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <input id="input" type="text" />
+        <button id="btn">年龄</button>
+        <p>GET结果显示在这里 <span id="resGET"></span></p>
+        <p>POST结果显示在这里 <span id="resPOST"></span></p>
+
+        <script>
+
+            $('#btn').on('click',function(){
+                var value = $('input').val();
+                var param = { name: value, second: 222 };
+                $.ajax({
+                    url: 'http://127.0.0.1:3000/nav.do',
+                    type: 'GET',
+                    data: param
+                }).done(function(){
+                    $('#resGET').text(res.age);
+                });
+
+                $.ajax({
+                    url: 'http://127.0.0.1:3000/list.do',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: param
+                }).done(function(res) {
+                    $('#resPOST').text(res.age);
+                });
+
+            });
+           
+        </script>
+    </body>
+</html>
