@@ -38,6 +38,9 @@ app.get('/nav.do', function(req, res) {
 app.post('/list.do', function(req, res) {
     console.log(req.body);
     listJSON.data.result = listJSON.data.result.shuffle();
+    if (Math.floor(Math.random() * 10) < 4) {
+        listJSON.data.pagination.totalPage = listJSON.data.pagination.page = 3;
+    }
     res.send(listJSON);
 })
 

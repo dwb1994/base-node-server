@@ -10,13 +10,69 @@
         <p>GET结果显示在这里 <span id="resGET"></span></p>
         <p>POST结果显示在这里 <span id="resPOST"></span></p>
 
+        <div>
+            <h1>获取导航信息</h1>
+            <p>请求地址: http://yapi.demo.qunar.com/mock/5280/nav</p>
+            <p>请求方法: GET</p>
+            <p>请求参数: </p>
+            <table border="1">
+                <tr>
+                    <th>参数名</th>
+                    <th>类型</th>
+                    <th>是否必须</th>
+                    <th>示例</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>int</td>
+                    <td>否</td>
+                    <td>-1</td>
+                    <td>获取导航标题的个数，-1表示获取全部，默认获取全部</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h1>获取文章列表</h1>
+            <p>请求地址: http://yapi.demo.qunar.com/mock/5280/list</p>
+            <p>请求方法: POST</p>
+            <p>请求参数: </p>
+            <table border="1">
+                <tr>
+                    <th>参数名</th>
+                    <th>类型</th>
+                    <th>是否必须</th>
+                    <th>示例</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>page</td>
+                    <td>int</td>
+                    <td>是</td>
+                    <td>0</td>
+                    <td>获取某一页的文章</td>
+                </tr><tr>
+                    <td>size</td>
+                    <td>int</td>
+                    <td>否</td>
+                    <td>10</td>
+                    <td>获取一页文章的文章数，默认返回10条文章</td>
+                </tr><tr>
+                    <td>typeId</td>
+                    <td>int</td>
+                    <td>是</td>
+                    <td>3</td>
+                    <td>文章类型</td>
+                </tr>
+            </table>
+        </div>
         <script>
 
             $('#btn').on('click',function(){
                 var value = $('input').val();
                 var param = { name: value, second: 222 };
                 $.ajax({
-                    url: 'http://127.0.0.1:3000/nav.do',
+                    url: 'http://yapi.demo.qunar.com/mock/5280/nav',
                     type: 'GET',
                     data: param
                 }).done(function(){
@@ -24,7 +80,7 @@
                 });
 
                 $.ajax({
-                    url: 'http://127.0.0.1:3000/list.do',
+                    url: 'http://yapi.demo.qunar.com/mock/5280/list',
                     type: 'POST',
                     dataType: 'json',
                     data: param
